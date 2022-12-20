@@ -1,1 +1,9 @@
-export type Pokemon = {};
+// Not fully defined
+export type Pokemon = {
+  species: {
+    name: string;
+  };
+  sprites: {
+    front_shiny: string;
+  };
+};
