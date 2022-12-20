@@ -1,2 +1,2 @@
 # rtk-query-sandbox
-A sandbox playground to test out rtk-query functionalities
+A sandbox playground to test out RTK-query functionalities
