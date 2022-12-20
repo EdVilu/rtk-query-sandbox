@@ -1,5 +1,7 @@
 // Not fully defined
 export type Pokemon = {
+  name: string;
+  weight: number;
   species: {
     name: string;
   };

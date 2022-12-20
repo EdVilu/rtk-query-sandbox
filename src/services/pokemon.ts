@@ -9,6 +9,11 @@ export const pokemonApi = createApi({
     getPokemonByName: builder.query<Pokemon, string>({
       query: (name) => `pokemon/${name}`,
     }),
+    getPokemonByUrl: builder.query<Pokemon, string>({
+      query: (url) => ({
+        url,
+      }),
+    }),
     getPokemonList: builder.query<
       { count: number; results: PokemonListItem[] },
       number
@@ -27,4 +32,8 @@ export const pokemonApi = createApi({
   }),
 });
 
-export const { useGetPokemonByNameQuery, useGetPokemonListQuery } = pokemonApi;
+export const {
+  useGetPokemonByNameQuery,
+  useGetPokemonListQuery,
+  useGetPokemonByUrlQuery,
+} = pokemonApi;

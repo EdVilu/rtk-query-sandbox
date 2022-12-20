@@ -1,13 +1,10 @@
 import {
-  Box,
-  Button,
   Flex,
   Spinner,
   Table,
   TableCaption,
   TableContainer,
   Tbody,
-  Td,
   Th,
   Thead,
   Tr,
@@ -15,6 +12,7 @@ import {
 import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useGetPokemonListQuery } from '../../../services/pokemon';
+import { PokemonListItem } from '../../components/PokemonListItem';
 
 export const PokemonView = () => {
   const [page, setPage] = useState(0);
@@ -42,15 +40,17 @@ export const PokemonView = () => {
               <Tr>
                 <Th w="40px">#</Th>
                 <Th>Name</Th>
+                <Th>Weight</Th>
               </Tr>
             </Thead>
 
             <Tbody>
               {data?.results.map((pokemon, index) => (
-                <Tr key={pokemon.name}>
-                  <Td>{index + 1}</Td>
-                  <Td>{pokemon.name}</Td>
-                </Tr>
+                <PokemonListItem
+                  listItemData={pokemon}
+                  key={pokemon.name}
+                  index={index}
+                />
               ))}
             </Tbody>
           </Table>
