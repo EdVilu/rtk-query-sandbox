@@ -7,3 +7,8 @@ export type Pokemon = {
     front_shiny: string;
   };
 };
+
+export type PokemonListItem = {
+  name: string;
+  url: string;
+};
