@@ -1,0 +1,77 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "prettier"
+  ],
+  "plugins": ["prettier"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".ts", ".tsx"]
+      }
+    ],
+    "react/react-in-jsx-scope": 0,
+    "prettier/prettier": 2,
+    "no-console": 1,
+    "complexity": 0, // [1, 6] (enabling in progress)
+    "import/prefer-default-export": 0,
+    "react/jsx-props-no-spreading": 0,
+    "import/extensions": 0,
+    "no-nested-ternary": 0,
+    "@typescript-eslint/naming-convention": [
+      2,
+      {
+        "selector": "interface",
+        "leadingUnderscore": "allow",
+        "format": ["PascalCase"]
+      }
+    ],
+    "react/prop-types": 0,
+    "react/require-default-props": 0,
+    //    "@typescript-eslint/no-unused-expressions": [2, { "allowShortCircuit": true }],
+    // Open to discuss
+    "@typescript-eslint/no-shadow": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-underscore-dangle": 0,
+    "@typescript-eslint/no-unused-vars": 1,
+    "jsx-a11y/click-events-have-key-events": 1,
+    // To re-enable
+    "import/no-cycle": 1,
+    "react/jsx-no-duplicate-props": [2, { "ignoreCase": false }],
+    "react/no-array-index-key": 1,
+    "react/no-unused-prop-types": 0,
+    "prefer-promise-reject-errors": 1,
+    "@typescript-eslint/no-implied-eval": 1,
+    "@typescript-eslint/no-use-before-define": 1,
+    "@typescript-eslint/no-throw-literal": 1,
+    "@typescript-eslint/no-unused-expressions": 1,
+    "global-require": 1,
+    "consistent-return": 1,
+    "no-empty": 1,
+    "arrow-body-style": 0,
+    //redux toolkit rule
+    "no-param-reassign": [
+      1,
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state", "acc"]
+      }
+    ]
+  }
+}
