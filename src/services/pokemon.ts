@@ -11,9 +11,18 @@ export const pokemonApi = createApi({
     }),
     getPokemonList: builder.query<
       { count: number; results: PokemonListItem[] },
-      { offset: number; limit: number }
+      number
     >({
-      query: ({ limit, offset }) => `pokemon?limit=${limit}&offset=${offset}`,
+      query: (page) => `pokemon?limit=30&offset=${page * 30}`,
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      },
+      merge: (currentData, newData) => {
+        currentData.results.push(...newData.results);
+      },
     }),
   }),
 });

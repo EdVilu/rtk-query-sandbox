@@ -1,4 +1,6 @@
 import {
+  Box,
+  Button,
   Flex,
   Spinner,
   Table,
@@ -6,47 +8,54 @@ import {
   TableContainer,
   Tbody,
   Td,
-  Text,
   Th,
   Thead,
   Tr,
 } from '@chakra-ui/react';
+import { useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { useGetPokemonListQuery } from '../../../services/pokemon';
 
 export const PokemonView = () => {
-  const { data, error, isLoading } = useGetPokemonListQuery({
-    limit: 30,
-    offset: 0,
-  });
+  const [page, setPage] = useState(0);
+  const { data } = useGetPokemonListQuery(page);
   return (
     <Flex width="full" justify="center" direction="column">
-      {error && <Text color="red">Oh no, there was an error</Text>}
-      <TableContainer>
-        <Table variant="simple">
-          <TableCaption placement="top">Pokemons</TableCaption>
-          <Thead>
-            <Tr>
-              <Th w="40px">#</Th>
-              <Th>Name</Th>
-            </Tr>
-          </Thead>
-          <Tbody>
-            {isLoading && (
+      <InfiniteScroll
+        style={{ width: '100%' }}
+        dataLength={data?.results.length || 0}
+        next={() => {
+          setPage(page + 1);
+        }}
+        hasMore={data ? page * 30 < data.count : true}
+        loader={<Spinner />}
+        endMessage={
+          <p style={{ textAlign: 'center' }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        <TableContainer>
+          <Table variant="simple">
+            <TableCaption placement="top">Pokemons</TableCaption>
+            <Thead>
               <Tr>
-                <Td colSpan={2} textAlign="center">
-                  <Spinner />
-                </Td>
+                <Th w="40px">#</Th>
+                <Th>Name</Th>
               </Tr>
-            )}
-            {data?.results.map((pokemon, index) => (
-              <Tr key={pokemon.name}>
-                <Td>{index + 1}</Td>
-                <Td>{pokemon.name}</Td>
-              </Tr>
-            ))}
-          </Tbody>
-        </Table>
-      </TableContainer>
+            </Thead>
+
+            <Tbody>
+              {data?.results.map((pokemon, index) => (
+                <Tr key={pokemon.name}>
+                  <Td>{index + 1}</Td>
+                  <Td>{pokemon.name}</Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer>
+      </InfiniteScroll>
     </Flex>
   );
 };
