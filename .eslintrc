@@ -50,9 +50,9 @@
     "import/no-extraneous-dependencies": 0,
     "no-underscore-dangle": 0,
     "@typescript-eslint/no-unused-vars": 1,
-    "jsx-a11y/click-events-have-key-events": 1,
+//    "jsx-a11y/click-events-have-key-events": 1,
     // To re-enable
-    "import/no-cycle": 1,
+//    "import/no-cycle": 1,
     "react/jsx-no-duplicate-props": [2, { "ignoreCase": false }],
     "react/no-array-index-key": 1,
     "react/no-unused-prop-types": 0,

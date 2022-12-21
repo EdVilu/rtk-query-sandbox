@@ -40,7 +40,6 @@ export const PokemonView = () => {
               <Tr>
                 <Th w="40px">#</Th>
                 <Th>Name</Th>
-                <Th>Weight</Th>
               </Tr>
             </Thead>
 
